@@ -8,7 +8,7 @@ pipeline{
     stages{
         stage('INSTALL DEPENDENCIES'){
             steps{
-                bat 'npm install'
+                sh 'npm install'
             }
         }
 
@@ -20,13 +20,13 @@ pipeline{
 
         stage('BUILD'){
             steps{
-                bat 'npm run build'
+                sh 'npm run build'
             }
         }
 
         stage('DEPLOY'){
             steps{
-                bat 'npx vercel --prod --yes --token=%VERCEL_TOKEN%'
+                sh 'npx vercel --prod --yes --token=$VERCEL_TOKEN'
             }
         }
     }
