@@ -11,19 +11,22 @@ pipeline{
                 bat 'npm install'
             }
         }
+
         stage('TEST'){
             steps{
                 echo 'Skipping tests...'
             }
         }
+
         stage('BUILD'){
             steps{
                 bat 'npm run build'
             }
         }
+
         stage('DEPLOY'){
             steps{
-                bat 'npx vercel --prod --yes --token = %VERCEL_TOKEN%'
+                bat 'npx vercel --prod --yes --token=%VERCEL_TOKEN%'
             }
         }
     }
